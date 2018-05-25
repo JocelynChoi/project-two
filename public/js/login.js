@@ -1,5 +1,5 @@
 $(document).ready(function() {
   
-  handleLoginSugnup("form.login", "/api/login")
+  handleLoginSignup("form.login", "/api/login")
 
 });

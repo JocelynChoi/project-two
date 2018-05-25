@@ -1,7 +1,7 @@
 // Getting references to our form and inputs
-function handleLoginSugnup(form, url) {
+function handleLoginSignup(form, url) {
     var form = $(form);
-    var emailInput = $("input#email-input");
+    var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
 
     // When the form is submitted, we validate there's an email and password entered
@@ -9,24 +9,24 @@ function handleLoginSugnup(form, url) {
         event.preventDefault();
         $(".container").hide();
         var userData = {
-            email: emailInput.val().trim(),
+            username: usernameInput.val().trim(),
             password: passwordInput.val().trim()
         };
 
-        if (!userData.email || !userData.password) {
+        if (!userData.username || !userData.password) {
             return;
         }
 
         // If we have an email and password we run the authUser function and clear the form
-        authUser(userData.email, userData.password);
-        emailInput.val("");
+        authUser(userData.username, userData.password);
+        usernameInput.val("");
         passwordInput.val("");
     });
 
     // AUTHUser does a post to the url and if successful, redirects us the the members page
-    function authUser(email, password) {
+    function authUser(username, password) {
         $.post(url, {
-            email: email,
+            username: username,
             password: password
         }).then(function (data) {
             window.location.replace(data);
